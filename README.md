@@ -1,7 +1,8 @@
-# TrendingRepo :
+TrendingRepo :
 	▪	Created a Java based android application lists the most trending repositories that fetches data from GitHub repo API.
 
-## Features
+
+Features
 
 	▪	Home Screen
 	   • We have made user friendly design of home screen
@@ -18,7 +19,7 @@
 	        ⁃ Users can share repositories they like with the help of  SHARE button .
 	        ⁃ User can visit the repo details page with the help of VISIT SITE  in browser.
 
-## Package Structure
+Package Structure
 
 com.radixweb.trendingrepo
 
@@ -64,27 +65,27 @@ com.radixweb.trendingrepo
 
 ## Tech components :
 
-	•	** Room Persistence Library ** : A local database that servers as a single source of truth for data presented to the user.
+	•	Room Persistence Library : A local database that servers as a single source of truth for data presented to the user.
 
-	•	** MVVM architecture ** : It’s pattern provides an easy way to structure the project codes. The reason why MVVM is widely accepted is that it provides modularity, testability, and a more clean and maintainable codebase.
+	•	MVVM architecture : It’s pattern provides an easy way to structure the project codes. The reason why MVVM is widely accepted is that it provides modularity, testability, and a more clean and maintainable codebase.
 
-	•	** Live Data ** :  LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. 
+	•	Live Data :  LiveData is lifecycle-aware, meaning it respects the lifecycle of other app components, such as activities, fragments, or services. 
 
-	•	** ViewModel ** : For implementing class that is responsible for preparing and managing the data for an Activity or a Fragment 
+	•	ViewModel : For implementing class that is responsible for preparing and managing the data for an Activity or a Fragment 
 
-	•	** Lifecycle **  : For implementing helps developers understand which states activities go through when a user navigates through an app
+	•   Lifecycle : For implementing helps developers understand which states activities go through when a user navigates through an app
 
-	•	** RxJava2 **	: For implementing Observable pattern.
+	•	RxJava2	: For implementing Observable pattern.
 
-	•	** Mokito ** : For implementing Unit Test cases for API service, Database, Repository and ViewModel.
+	•	Mokito : For implementing Unit Test cases for API service, Database, Repository and ViewModel.
 
-	•	** Dagger2 ** : For implementing dependency injection.
+	•   Dagger2 : For implementing dependency injection.
 
-	•	** Retrofit2 **  : For implementing API integration & fetch the data easily from the source.
+	•   Retrofit2  : For implementing API integration & fetch the data easily from the source.
 
-	•	** Okhttp3 **  : For implementing interceptor, logging and mocking web server.
+	•   Okhttp3 : For implementing interceptor, logging and mocking web server.
 
-	•	** Picasso ** : For implementing image loading from the source API.
+	•	Picasso : For implementing image loading from the source API.
 
-	•	** Gson  ** :  For implementing for JSON data serialisation.
+	•	Gson :  For implementing for JSON data serialisation.
 
