@@ -1,7 +1,13 @@
 package com.radixweb.trendingrepo.di.module;
 
-public class ActivityModule {
+import com.radixweb.trendingrepo.ui.activity.TrendingRepoListActivity;
 
-    // implement ActivityModule here....
+import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
 
+@Module
+public abstract class ActivityModule {
+
+    @ContributesAndroidInjector()
+    abstract TrendingRepoListActivity contributeGithubListActivity();
 }

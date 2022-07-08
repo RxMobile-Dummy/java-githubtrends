@@ -1,7 +1,26 @@
 package com.radixweb.trendingrepo;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 public interface AppConstants {
 
-    // implement AppConstants here....
+    String QUERY_SORT = "stars";
+    String QUERY_ORDER = "desc";
+    String QUERY_API = "android";
 
+    String MAX_PAGE_SIZE = "20";
+    String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
+
+    String INTENT_POST = "intent_post";
+
+    Map<String, Integer> COLOR_LANGUAGE_MAP = Collections.unmodifiableMap(
+            new HashMap<String, Integer>() {{
+                put("Java", R.color.colorPrimary);
+                put("Kotlin", R.color.color_orange);
+                put("Dart", R.color.color_blue);
+                put("JavaScript", R.color.color_yellow);
+                put("CSS", R.color.color_yellow);
+            }});
 }
