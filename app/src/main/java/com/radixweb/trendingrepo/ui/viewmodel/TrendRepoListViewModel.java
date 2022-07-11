@@ -23,8 +23,8 @@ public class TrendRepoListViewModel extends ViewModel {
     private SingleLiveEvent<List<TrendRepoEntity>> repoListLiveData = new SingleLiveEvent<>();
 
     @Inject
-    public TrendRepoListViewModel(TrendRepoDao githubDao, TrendRepoApiServices githubApiService) {
-        repository = new TrendRepoRepository(githubDao, githubApiService);
+    public TrendRepoListViewModel(TrendRepoDao trendRepoDao, TrendRepoApiServices trendRepoApiServices) {
+        repository = new TrendRepoRepository(trendRepoDao, trendRepoApiServices);
     }
 
     public void fetchRepositories() {
@@ -42,7 +42,7 @@ public class TrendRepoListViewModel extends ViewModel {
         return repositories;
     }
 
-    public SingleLiveEvent<List<TrendRepoEntity>> getRepositoryListLiveData() {
+    public SingleLiveEvent<List<TrendRepoEntity>>   getRepositoryListLiveData() {
         return repoListLiveData;
     }
 

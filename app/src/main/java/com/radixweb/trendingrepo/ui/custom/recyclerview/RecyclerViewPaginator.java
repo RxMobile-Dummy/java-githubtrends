@@ -22,7 +22,6 @@ public abstract class RecyclerViewPaginator extends RecyclerView.OnScrollListene
     private void init() {
         recyclerView.addOnScrollListener(this);
         this.layoutManager = recyclerView.getLayoutManager();
-//        loadFirstData();
     }
 
     @Override
@@ -60,5 +59,4 @@ public abstract class RecyclerViewPaginator extends RecyclerView.OnScrollListene
 
     public abstract boolean isLastPage();
     public abstract void loadMore();
-//    public abstract void loadFirstData();
 }

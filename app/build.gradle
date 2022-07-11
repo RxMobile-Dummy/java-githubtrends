@@ -45,7 +45,6 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
     implementation 'androidx.room:room-common:2.4.2'
     implementation 'androidx.room:room-runtime:2.4.2'
-    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 
     /* Picasso lib for image loading  */
     implementation "com.squareup.picasso:picasso:$picasso_version"
@@ -65,6 +64,7 @@ dependencies {
     /* Mokito  */
     testImplementation "org.mockito:mockito-core:$mockito_version"
     androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttp_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

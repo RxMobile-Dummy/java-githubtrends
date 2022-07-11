@@ -78,9 +78,9 @@ public class AppUtils {
         pairs.add(new Pair(imageView, context.getString(R.string.transition_image)));
         pairs.add(new Pair(titleView, context.getString(R.string.transition_title)));
         if (revealView.getVisibility() == View.VISIBLE)
-            new Pair(revealView, context.getString(R.string.transition_background));
+            pairs.add(new Pair(revealView, context.getString(R.string.transition_background)));
         if (languageView.getVisibility() == View.VISIBLE)
-            new Pair(languageView, context.getString(R.string.transition_language));
+            pairs.add(new Pair(languageView, context.getString(R.string.transition_language)));
 
         Pair[] pairArr = new Pair[pairs.size()];
         pairArr = pairs.toArray(pairArr);
@@ -96,9 +96,7 @@ public class AppUtils {
 
     public static void updateStatusBarColor(Activity activity,
                                             int color) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            activity.getWindow().setStatusBarColor(color);
-        }
+        activity.getWindow().setStatusBarColor(color);
     }
 
 

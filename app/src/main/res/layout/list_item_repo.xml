@@ -17,7 +17,6 @@
         app:cardCornerRadius="@dimen/card_view_corner_radius"
         app:cardElevation="@dimen/card_view_elevation">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,29 +80,29 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:id="@+id/item_img_language"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
+            android:layout_width="57dp"
+            android:layout_height="23dp"
             android:layout_gravity="end"
             android:background="@drawable/ic_rectangle">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/item_likes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@android:asset/fonts/Montserrat-Medium"
-                android:maxLines="1"
-                android:textColor="@color/ghost_white"
-                android:textSize="@dimen/font_xxsmall"
-                app:fontFamily="@android:asset/fonts/Montserrat-Medium"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+             <androidx.appcompat.widget.AppCompatTextView
+                 android:id="@+id/item_likes"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerInParent="true"
+                 android:fontFamily="@android:asset/fonts/Montserrat-Medium"
+                 android:maxLines="1"
+                 android:textColor="@color/ghost_white"
+                 android:textSize="@dimen/font_xsmall"
+                 app:fontFamily="@android:asset/fonts/Montserrat-Medium"
+                 app:layout_constraintBottom_toBottomOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+        </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 

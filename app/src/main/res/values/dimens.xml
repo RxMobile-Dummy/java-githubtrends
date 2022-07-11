@@ -75,7 +75,7 @@
 
     <dimen name="card_view_elevation">6.7dp</dimen>
     <dimen name="card_image_view_elevation">4dp</dimen>
-    <dimen name="card_view_corner_radius">3.3dp</dimen>
+    <dimen name="card_view_corner_radius">8dp</dimen>
 
 
     <dimen name="constraint_height">60dp</dimen>

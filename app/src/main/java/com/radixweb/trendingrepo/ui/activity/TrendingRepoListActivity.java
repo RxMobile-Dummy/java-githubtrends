@@ -2,10 +2,10 @@ package com.radixweb.trendingrepo.ui.activity;
 
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -25,6 +25,8 @@ import com.radixweb.trendingrepo.ui.custom.recyclerview.RecyclerLayoutClickListe
 import com.radixweb.trendingrepo.ui.custom.recyclerview.RecyclerViewPaginator;
 import com.radixweb.trendingrepo.ui.viewmodel.TrendRepoListViewModel;
 import com.radixweb.trendingrepo.utils.AnimUtils;
+import com.radixweb.trendingrepo.utils.AppUtils;
+import com.radixweb.trendingrepo.utils.NavigatorUtils;
 import com.radixweb.trendingrepo.utils.ShareUtils;
 
 import java.util.Arrays;
@@ -40,9 +42,9 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
     ViewModelFactory viewModelFactory;
 
     private TrendingRepoListActivityBinding binding;
-    private TrendRepoListViewModel githubListViewModel;
+    private TrendRepoListViewModel trendRepoListViewModel;
 
-    private TrendRepoAdapter githubListAdapter;
+    private TrendRepoAdapter trendRepoAdapter;
     private FilterListAdapter filterListAdapter;
 
     SwipeController swipeController = null;
@@ -63,34 +65,34 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
         binding.filterList.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
         binding.filterList.addOnItemTouchListener(new RecyclerItemClickListener(getApplicationContext(), (parentView, childView, position) -> {
             filterListAdapter.updateSelection(position);
-            githubListAdapter.getFilter().filter(filterListAdapter.getItem(position));
+            trendRepoAdapter.getFilter().filter(filterListAdapter.getItem(position));
         }));
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        githubListAdapter = new TrendRepoAdapter(getApplicationContext(),this);
-        binding.recyclerView.setAdapter(githubListAdapter);
+        trendRepoAdapter = new TrendRepoAdapter(getApplicationContext(),this);
+        binding.recyclerView.setAdapter(trendRepoAdapter);
         binding.recyclerView.addOnScrollListener(new RecyclerViewPaginator(binding.recyclerView) {
             @Override
             public boolean isLastPage() {
-                return githubListViewModel.isLastPage();
+                return trendRepoListViewModel.isLastPage();
             }
 
             @Override
             public void loadMore() {
-                githubListViewModel.fetchRepositories();
+                trendRepoListViewModel.fetchRepositories();
             }
         });
 
-        if (githubListViewModel.getRepositories().isEmpty()) {
+        if (trendRepoListViewModel.getRepositories().isEmpty()) {
             displayLoader();
-            githubListViewModel.fetchRepositories();
-        } else animateView(githubListViewModel.getRepositories());
+            trendRepoListViewModel.fetchRepositories();
+        } else animateView(trendRepoListViewModel.getRepositories());
 
         /// TODO : For swiping layout
         swipeController = new SwipeController(this,new SwipeControllerActions() {
             @Override
             public void onRightClicked(int position) {
-                sharePost(githubListAdapter.getItem(position));
+                sharePost(trendRepoAdapter.getItem(position));
             }
         });
 
@@ -106,9 +108,9 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
     }
 
     private void initialiseViewModel() {
-        githubListViewModel = new ViewModelProvider(this, viewModelFactory).get(TrendRepoListViewModel.class);
-        githubListViewModel.getRepositoryListLiveData().observe(this, repositories -> {
-            if (githubListAdapter.getItemCount() == 0) {
+        trendRepoListViewModel = new ViewModelProvider(this, viewModelFactory).get(TrendRepoListViewModel.class);
+        trendRepoListViewModel.getRepositoryListLiveData().observe(this, repositories -> {
+            if (trendRepoAdapter.getItemCount() == 0) {
                 if (!repositories.isEmpty()) {
                     animateView(repositories);
 
@@ -136,12 +138,20 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
 
     private void displayDataView(List<TrendRepoEntity> repositories) {
         binding.viewEmpty.emptyContainer.setVisibility(View.GONE);
-        githubListAdapter.setItems(repositories);
+        trendRepoAdapter.setItems(repositories);
     }
 
     private void displayEmptyView() {
         hideLoader();
         binding.viewEmpty.emptyContainer.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void redirectToDetailScreen(View imageView, View titleView, View revealView, View languageView, TrendRepoEntity trendRepoEntity) {
+        NavigatorUtils.redirectToDetailScreen(this, trendRepoEntity,
+                ActivityOptionsCompat.makeSceneTransitionAnimation(this, AppUtils.getTransitionElements(
+                        getApplicationContext(), imageView, titleView, revealView, languageView
+                )));
     }
 
     @Override

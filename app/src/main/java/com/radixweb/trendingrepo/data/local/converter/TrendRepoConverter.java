@@ -2,6 +2,8 @@ package com.radixweb.trendingrepo.data.local.converter;
 
 import static com.radixweb.trendingrepo.AppConstants.DATE_TIME_FORMAT;
 
+import android.annotation.SuppressLint;
+
 import androidx.room.TypeConverter;
 
 import java.text.DateFormat;
@@ -12,7 +14,8 @@ import java.util.TimeZone;
 
 public class TrendRepoConverter {
 
-    private static DateFormat df = new SimpleDateFormat(DATE_TIME_FORMAT);
+    @SuppressLint("SimpleDateFormat")
+    private static final DateFormat df = new SimpleDateFormat(DATE_TIME_FORMAT);
 
     @TypeConverter
     public static Date fromTimestamp(String value) {
@@ -24,10 +27,8 @@ public class TrendRepoConverter {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            return null;
-        } else {
-            return null;
         }
+        return null;
     }
 
 

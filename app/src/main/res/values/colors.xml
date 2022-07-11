@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#B03DDC84</color>
-    <color name="colorPrimaryDark">#B03DDC84</color>
-    <color name="colorAccent">#B03DDC84</color>
+    <color name="colorPrimary">#3DDC84</color>
 
     <color name="ghost_white">#F9F9FB</color>
-    <color name="sds">#8BC34A</color>
 
     <color name="item_color_title">#060606</color>
     <color name="item_color_time">#bfbfbf</color>

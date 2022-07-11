@@ -31,7 +31,7 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
 
     private String lastFilteredLanguage = "All";
 
-    public TrendRepoAdapter(Context context,RecyclerLayoutClickListener listener) {
+    public TrendRepoAdapter(Context context, RecyclerLayoutClickListener listener) {
         this.context = context;
         this.items = new ArrayList<>();
         this.listener = listener;
@@ -45,6 +45,8 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
 
         RepoListItemBinding itemBinding = RepoListItemBinding.inflate(layoutInflater, parent, false);
         CustomViewHolder customItemViewHolder = new CustomViewHolder(itemBinding);
+
+        itemBinding.cardView.setOnClickListener(v -> customItemViewHolder.onCardButtonClick());
 
         return customItemViewHolder;
     }
@@ -77,15 +79,15 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
                 String language = charSequence.toString();
                 lastFilteredLanguage = language;
 
-                if(language.equalsIgnoreCase("All")) {
+                if (language.equalsIgnoreCase("All")) {
                     items = filteredItems;
 
                 } else {
                     List<TrendRepoEntity> list = new ArrayList<>();
-                    for (TrendRepoEntity githubEntity : filteredItems) {
+                    for (TrendRepoEntity trendRepoEntity : filteredItems) {
 
-                        if(language.equalsIgnoreCase(githubEntity.getLanguage())) {
-                            list.add(githubEntity);
+                        if (language.equalsIgnoreCase(trendRepoEntity.getLanguage())) {
+                            list.add(trendRepoEntity);
                         }
                     }
                     items = list;
@@ -107,36 +109,41 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
     protected class CustomViewHolder extends RecyclerView.ViewHolder {
 
         private RepoListItemBinding binding;
+
         public CustomViewHolder(RepoListItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public void bindTo(TrendRepoEntity githubEntity) {
-            Picasso.get().load(githubEntity.getOwner().getAvatarUrl())
+        public void bindTo(TrendRepoEntity trendRepoEntity) {
+            Picasso.get().load(trendRepoEntity.getOwner().getAvatarUrl())
                     .placeholder(R.drawable.ic_placeholder)
                     .into(binding.itemProfileImg);
 
-            binding.itemTitle.setText(githubEntity.getFullName());
+            binding.itemTitle.setText(trendRepoEntity.getFullName());
             binding.itemTime.setText(String.format(context.getString(R.string.item_date),
-                    AppUtils.getDate(githubEntity.getCreatedAt()),
-                    AppUtils.getTime(githubEntity.getCreatedAt())));
+                    AppUtils.getDate(trendRepoEntity.getCreatedAt()),
+                    AppUtils.getTime(trendRepoEntity.getCreatedAt())));
 
-            binding.itemDesc.setText(githubEntity.getDescription());
+            binding.itemDesc.setText(trendRepoEntity.getDescription());
 
-            if(githubEntity.getLanguage() != null) {
+            if (trendRepoEntity.getLanguage() != null) {
                 binding.itemImgLanguage.setVisibility(View.VISIBLE);
                 binding.itemLikes.setVisibility(View.VISIBLE);
-                binding.itemLikes.setText(githubEntity.getLanguage());
+                binding.itemLikes.setText(trendRepoEntity.getLanguage());
 
                 GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.ic_rectangle);
-                drawable.setColor(AppUtils.getColorByLanguage(context, githubEntity.getLanguage()));
+                drawable.setColor(AppUtils.getColorByLanguage(context, trendRepoEntity.getLanguage()));
                 binding.itemImgLanguage.setBackground(drawable);
 
             } else {
                 binding.itemLikes.setVisibility(View.GONE);
                 binding.itemImgLanguage.setVisibility(View.GONE);
             }
+        }
+
+        private void onCardButtonClick() {
+            listener.redirectToDetailScreen(binding.itemProfileImg, binding.itemTitle, binding.itemImgLanguage, binding.itemLikes, getItem(getLayoutPosition()));
         }
     }
 }
