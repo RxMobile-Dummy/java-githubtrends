@@ -34,14 +34,15 @@ public class SwipeController extends ItemTouchHelper.Callback {
 
     private static final float buttonWidth = 200;
 
-    public SwipeController(Context context , SwipeControllerActions buttonsActions) {
+    public SwipeController(Context context, SwipeControllerActions buttonsActions) {
         this.buttonsActions = buttonsActions;
         this.context = context;
     }
 
     @Override
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
-        return makeMovementFlags(0, recyclerView.getRight());
+        final int swipeFlags = ItemTouchHelper.START;
+        return makeMovementFlags(0, swipeFlags);
     }
 
     @Override
@@ -132,14 +133,14 @@ public class SwipeController extends ItemTouchHelper.Callback {
     }
 
     private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
-        float buttonWidthWithoutPadding = buttonWidth - 20;
-        float corners = 16;
+        float buttonWidthWithoutPadding = buttonWidth - 0;
+        float corners = 4;
 
         View itemView = viewHolder.itemView;
         Paint p = new Paint();
 
         RectF rightButton = new RectF(itemView.getRight() - buttonWidthWithoutPadding, itemView.getTop(), itemView.getRight(), itemView.getBottom());
-        p.setColor(ContextCompat.getColor(context,R.color.sds));
+        p.setColor(ContextCompat.getColor(context, R.color.colorPrimary));
         c.drawRoundRect(rightButton, corners, corners, p);
 
         drawText("SHARE", c, rightButton);

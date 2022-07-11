@@ -37,30 +37,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
                 android:layout_marginRight="@dimen/margin"
-                android:ellipsize="end"
-                android:maxLines="1"
                 android:paddingEnd="@dimen/margin"
                 android:paddingRight="@dimen/margin"
                 android:textColor="@color/item_color_title"
-                android:textSize="@dimen/font_medium"
+                android:textSize="@dimen/font_xmedium"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/item_profile_img"
                 app:layout_constraintTop_toTopOf="@id/item_profile_img"
                 tools:text="Anita murthy has got to sdsdk" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/item_img_language"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:layout_marginBottom="@dimen/margin_small"
-                android:paddingStart="@dimen/margin_small"
-                android:paddingLeft="@dimen/margin_small"
-                android:src="@drawable/ic_circle"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/item_desc" />
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_time"
@@ -79,7 +63,6 @@
                 app:layout_constraintTop_toBottomOf="@id/item_title"
                 tools:text="3 min" />
 
-
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_desc"
                 android:layout_width="match_parent"
@@ -96,24 +79,28 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/item_profile_img" />
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_img_language"
+            android:layout_width="50dp"
+            android:layout_height="25dp"
+            android:layout_gravity="end"
+            android:background="@drawable/ic_rectangle">
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_likes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
-                android:layout_marginBottom="@dimen/margin_small"
                 android:fontFamily="@android:asset/fonts/Montserrat-Medium"
-                android:gravity="center_vertical"
-                android:paddingStart="@dimen/margin_small_medium"
-                android:paddingLeft="@dimen/margin_small_medium"
-                android:paddingEnd="@dimen/margin_xxlarge"
-                android:paddingRight="@dimen/margin_xxlarge"
-                android:textColor="@color/item_color_like"
-                android:textSize="@dimen/font_xmedium"
+                android:maxLines="1"
+                android:textColor="@color/ghost_white"
+                android:textSize="@dimen/font_xxsmall"
                 app:fontFamily="@android:asset/fonts/Montserrat-Medium"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/item_img_language"
-                app:layout_constraintTop_toBottomOf="@+id/item_desc" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

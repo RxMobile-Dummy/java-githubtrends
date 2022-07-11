@@ -119,7 +119,7 @@ public class AppUtils {
 
     public static Drawable updateGradientDrawableColor(Context context,
                                                        int bgColor) {
-        GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.ic_circle);
+        GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.ic_rectangle);
         drawable.setColor(bgColor);
         return drawable;
     }

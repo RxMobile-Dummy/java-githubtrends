@@ -129,9 +129,9 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
                 binding.itemLikes.setVisibility(View.VISIBLE);
                 binding.itemLikes.setText(githubEntity.getLanguage());
 
-                GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.ic_circle);
+                GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.ic_rectangle);
                 drawable.setColor(AppUtils.getColorByLanguage(context, githubEntity.getLanguage()));
-                binding.itemImgLanguage.setImageDrawable(drawable);
+                binding.itemImgLanguage.setBackground(drawable);
 
             } else {
                 binding.itemLikes.setVisibility(View.GONE);
