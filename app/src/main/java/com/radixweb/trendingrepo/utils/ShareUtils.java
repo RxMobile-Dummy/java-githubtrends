@@ -6,6 +6,10 @@ import androidx.core.app.ShareCompat;
 
 public class ShareUtils {
 
+    /**
+     * @param activity contain current activity.
+     * @param url contain URL which need to open in a webView.
+     */
     public static void shareUrl(Activity activity,
                                 String url) {
         ShareCompat.IntentBuilder

@@ -107,6 +107,9 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
         });
     }
 
+    /**
+     * initialization of viewModel
+     */
     private void initialiseViewModel() {
         trendRepoListViewModel = new ViewModelProvider(this, viewModelFactory).get(TrendRepoListViewModel.class);
         trendRepoListViewModel.getRepositoryListLiveData().observe(this, repositories -> {
@@ -120,15 +123,24 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
         });
     }
 
+    /**
+     * to show the loader
+     */
     private void displayLoader() {
         binding.viewLoader.rootView.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * hide the loader
+     */
     private void hideLoader() {
         binding.viewLoader.rootView.setVisibility(View.GONE);
     }
 
 
+    /**
+     * @param repositories contains list of repository to show after animation updation
+     */
     private void animateView(List<TrendRepoEntity> repositories) {
         hideLoader();
         AnimUtils.slideView(binding.filterLayout, binding.filterList, filterListAdapter);
@@ -136,16 +148,30 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
         binding.recyclerView.scheduleLayoutAnimation();
     }
 
+    /**
+     * @param repositories contains list of repository to set items to adapter.
+     */
     private void displayDataView(List<TrendRepoEntity> repositories) {
         binding.viewEmpty.emptyContainer.setVisibility(View.GONE);
         trendRepoAdapter.setItems(repositories);
     }
 
+
+    /**
+     * show empty view while data is null
+     */
     private void displayEmptyView() {
         hideLoader();
         binding.viewEmpty.emptyContainer.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * @param imageView contain imageview to animate.
+     * @param titleView contain textview to animate.
+     * @param revealView contain relativeLayout to animate.
+     * @param languageView contain textview to animate.
+     * @param trendRepoEntity contain model data which pass to next activity.
+     */
     @Override
     public void redirectToDetailScreen(View imageView, View titleView, View revealView, View languageView, TrendRepoEntity trendRepoEntity) {
         NavigatorUtils.redirectToDetailScreen(this, trendRepoEntity,
@@ -154,6 +180,9 @@ public class TrendingRepoListActivity extends AppCompatActivity implements Recyc
                 )));
     }
 
+    /**
+     * @param trendRepoEntity contain selected item model data to share the current item.
+     */
     @Override
     public void sharePost(TrendRepoEntity trendRepoEntity) {
         ShareUtils.shareUrl(this, trendRepoEntity.getHtmlUrl());

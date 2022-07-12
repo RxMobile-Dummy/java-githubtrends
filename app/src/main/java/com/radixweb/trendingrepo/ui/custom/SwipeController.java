@@ -132,6 +132,10 @@ public class SwipeController extends ItemTouchHelper.Callback {
         }
     }
 
+    /**
+     * @param c contain canvas
+     * @param viewHolder contain itemView
+     */
     private void drawButtons(Canvas c, RecyclerView.ViewHolder viewHolder) {
         float buttonWidthWithoutPadding = buttonWidth - 0;
         float corners = 4;
@@ -151,6 +155,11 @@ public class SwipeController extends ItemTouchHelper.Callback {
         }
     }
 
+    /**
+     * @param text provide text which user needs to draw the text on canvas.
+     * @param c contain canvas
+     * @param button contain button
+     */
     private void drawText(String text, Canvas c, RectF button) {
 
         float textSize = 30;

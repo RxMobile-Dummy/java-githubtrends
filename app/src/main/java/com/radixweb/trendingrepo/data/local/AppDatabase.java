@@ -11,6 +11,5 @@ import com.radixweb.trendingrepo.data.local.entity.TrendRepoEntity;
 @Database(entities = {TrendRepoEntity.class}, version = 1,  exportSchema = false)
 @TypeConverters({TrendRepoConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
-
     public abstract TrendRepoDao githubDao();
 }

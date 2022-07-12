@@ -32,6 +32,10 @@ public class TrendRepoRepository {
         this.trendRepoApiServices = trendRepoApiServices;
     }
 
+    /**
+     * @param page contain page number
+     * @return fetch repository details from the API using page field.
+     */
     public Observable<Resource<List<TrendRepoEntity>>> getRepositories(Long page) {
         return new NetworkBoundResource<List<TrendRepoEntity>, TrendRepoApiResponse>() {
 

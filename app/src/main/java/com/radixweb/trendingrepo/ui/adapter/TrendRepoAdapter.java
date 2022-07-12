@@ -71,6 +71,9 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
         return items.get(position);
     }
 
+    /**
+     * @return apply filter according to the language selection
+     */
     @Override
     public Filter getFilter() {
         return new Filter() {
@@ -115,6 +118,10 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
             this.binding = binding;
         }
 
+
+        /**
+         * @param trendRepoEntity pass current item detail to bind the view.
+         */
         public void bindTo(TrendRepoEntity trendRepoEntity) {
             Picasso.get().load(trendRepoEntity.getOwner().getAvatarUrl())
                     .placeholder(R.drawable.ic_placeholder)
@@ -142,6 +149,9 @@ public class TrendRepoAdapter extends RecyclerView.Adapter<TrendRepoAdapter.Cust
             }
         }
 
+        /**
+         * card click to manage navigation
+         */
         private void onCardButtonClick() {
             listener.redirectToDetailScreen(binding.itemProfileImg, binding.itemTitle, binding.itemImgLanguage, binding.itemLikes, getItem(getLayoutPosition()));
         }

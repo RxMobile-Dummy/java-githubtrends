@@ -28,6 +28,10 @@ import java.util.List;
 
 public class AppUtils {
 
+    /**
+     * @param dateString to get DATE according to DATE_TIME_FORMAT format.
+     * @return convert date according to given format.
+     */
     public static String getDate(String dateString) {
 
         try {
@@ -41,6 +45,10 @@ public class AppUtils {
         }
     }
 
+    /**
+     * @param dateString to get TIME according to DATE_TIME_FORMAT format.
+     * @return convert time according to given format.
+     */
     public static String getTime(String dateString) {
 
         try {
@@ -55,20 +63,14 @@ public class AppUtils {
         }
     }
 
-    public static int getWebViewCacheMode(Context context) {
-        return isConnected(context) ? WebSettings.LOAD_DEFAULT : WebSettings.LOAD_CACHE_ELSE_NETWORK;
-    }
-
-    public static boolean isConnected(Context context) {
-        ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo connection = manager.getActiveNetworkInfo();
-        if (connection != null && connection.isConnectedOrConnecting()) {
-            return true;
-        }
-        return false;
-    }
-
-
+    /**
+     * @param context which contain application context.
+     * @param imageView which contain the imageview to manage the animation.
+     * @param titleView which contain the textview to manage the animation.
+     * @param revealView which contain the constraint to manage the animation.
+     * @param languageView which contain the textview to manage the animation.
+     * @return apply the animation according to the pair of element of array
+     */
     public static Pair[] getTransitionElements(Context context,
                                                View imageView,
                                                View titleView,
@@ -87,6 +89,11 @@ public class AppUtils {
         return pairArr;
     }
 
+    /**
+     * @param context which contain application context.
+     * @param language which follow according to selection of language.
+     * @return provide the color according to selection of the language.
+     */
     public static int getColorByLanguage(Context context,
                                          String language) {
         if (COLOR_LANGUAGE_MAP.containsKey(language))
@@ -94,12 +101,21 @@ public class AppUtils {
         else return ContextCompat.getColor(context, R.color.colorPrimary);
     }
 
+    /**
+     * @param activity contain current activity.
+     * @param color contain selected color apply to the statusBar color.
+     */
     public static void updateStatusBarColor(Activity activity,
                                             int color) {
         activity.getWindow().setStatusBarColor(color);
     }
 
 
+    /**
+     * @param color contain selected color
+     * @param fraction contain fraction to apply on colors.
+     * @return apply lighten color using color and fraction
+     */
     public static int lighten(int color, double fraction) {
         int red = Color.red(color);
         int green = Color.green(color);
@@ -111,17 +127,20 @@ public class AppUtils {
         return Color.argb(alpha, red, green, blue);
     }
 
+    /**
+     * @param color contain selected color
+     * @param fraction contain fraction to apply on colors.
+     * @return apply calculation on brighten color using color and fraction
+     */
     private static int lightenColor(int color, double fraction) {
         return (int) Math.min(color + (color * fraction), 255);
     }
 
-    public static Drawable updateGradientDrawableColor(Context context,
-                                                       int bgColor) {
-        GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.ic_rectangle);
-        drawable.setColor(bgColor);
-        return drawable;
-    }
-
+    /**
+     * @param stateListDrawable to update button using this drawable.
+     * @param bgColor apply this color to the drawable.
+     * @return update the button drawable.
+     */
     public static Drawable updateStateListDrawableColor(Drawable stateListDrawable,
                                                         int bgColor) {
         DrawableContainer.DrawableContainerState drawableContainerState = (DrawableContainer.DrawableContainerState) stateListDrawable.getConstantState();
@@ -133,6 +152,11 @@ public class AppUtils {
         return stateListDrawable;
     }
 
+    /**
+     * @param stateListDrawable to update button using this drawable.
+     * @param bgColor apply this color to the drawable Stroke.
+     * @return update the button drawable Stroke.
+     */
     public static Drawable updateStateListDrawableStrokeColor(Drawable stateListDrawable,
                                                               int bgColor) {
         DrawableContainer.DrawableContainerState drawableContainerState = (DrawableContainer.DrawableContainerState) stateListDrawable.getConstantState();

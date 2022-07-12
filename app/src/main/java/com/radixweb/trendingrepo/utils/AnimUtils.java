@@ -11,6 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class AnimUtils {
 
+
+    /**
+     * @param view to which contain animated relative filter-layout.
+     * @param recyclerView which contain the list.
+     * @param adapter which hold the view of particular item.
+     */
+
     public static void slideView(View view,
                                  RecyclerView recyclerView,
                                  RecyclerView.Adapter adapter) {

@@ -7,10 +7,13 @@ import java.util.Map;
 public interface AppConstants {
 
     String QUERY_SORT = "stars";
+
     String QUERY_ORDER = "desc";
+
     String QUERY_API = "android";
 
     String MAX_PAGE_SIZE = "20";
+
     String DATE_TIME_FORMAT = "yyyy-MM-dd'T'HH:mm:ss";
 
     String INTENT_POST = "intent_post";

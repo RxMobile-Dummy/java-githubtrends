@@ -16,7 +16,7 @@ import javax.inject.Inject;
 
 public class TrendRepoListViewModel extends ViewModel {
 
-    private Long currentPage = 0l;
+    private Long currentPage = 0L;
     private TrendRepoRepository repository;
 
     private List<TrendRepoEntity> repositories = new ArrayList<>();
@@ -27,6 +27,9 @@ public class TrendRepoListViewModel extends ViewModel {
         repository = new TrendRepoRepository(trendRepoDao, trendRepoApiServices);
     }
 
+    /**
+     * fetch the repos from the server according to current page.
+     */
     public void fetchRepositories() {
         repository.getRepositories(++currentPage)
                 .subscribe(resource -> {
@@ -37,15 +40,17 @@ public class TrendRepoListViewModel extends ViewModel {
                 });
     }
 
-
     public List<TrendRepoEntity> getRepositories() {
         return repositories;
     }
 
-    public SingleLiveEvent<List<TrendRepoEntity>>   getRepositoryListLiveData() {
+    public SingleLiveEvent<List<TrendRepoEntity>> getRepositoryListLiveData() {
         return repoListLiveData;
     }
 
+    /**
+     * @return give bool value true if repos list getting null either false.
+     */
     public boolean isLastPage() {
         return getRepositoryListLiveData().getValue() != null &&
                 !getRepositoryListLiveData().getValue().isEmpty() ?

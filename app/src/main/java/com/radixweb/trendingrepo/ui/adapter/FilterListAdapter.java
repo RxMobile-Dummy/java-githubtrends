@@ -43,6 +43,9 @@ public class FilterListAdapter extends RecyclerView.Adapter<FilterListAdapter.Cu
         return items.get(position);
     }
 
+    /**
+     * @param currentPosition provide the current position to update the selection.
+     */
     public void updateSelection(int currentPosition) {
         int previousPosition = lastSelectedPosition;
         this.lastSelectedPosition = currentPosition;
