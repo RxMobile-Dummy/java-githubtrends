@@ -69,41 +69,44 @@ Package Structure
 
 com.radixweb.trendingrepo
 ```sh
-├── app
-│   ├── libs
-│   ├── src
-│   │   ├── main
-│   │   │   ├── java
-│   │   │   │   ├── com
-│   │   │   │   │   ├── radixweb
-│   │   │   │   │   │   ├── trendingrepo
-│   │   │   │   │   │   │   ├── data
-│   │   │   │   │   │   │   │   ├── local
-│   │   │   │   │   │   │   │   │   ├── converter
-│   │   │   │   │   │   │   │   │   ├── dao
-│   │   │   │   │   │   │   │   │   ├── entity
-│   │   │   │   │   │   │   │   │   └── AppDatabase.java
-│   │   │   │   │   │   │   │   ├── remote
-│   │   │   │   │   │   │   │   │   ├── api
-│   │   │   │   │   │   │   │   │   ├── interceptor
-│   │   │   │   │   │   │   │   │   └── model
-│   │   │   │   │   │   │   │   ├── repository
-│   │   │   │   │   │   │   ├── di
-│   │   │   │   │   │   │   │   ├── component
-│   │   │   │   │   │   │   │   ├── module
-│   │   │   │   │   │   │   ├── factory
-│   │   │   │   │   │   │   ├── ui
-│   │   │   │   │   │   │   │   ├── activity
-│   │   │   │   │   │   │   │   ├── adapter
-│   │   │   │   │   │   │   │   └── viewmodel
-│   │   │   │   │   │   │   ├── utils
-│   │   │   ├── res
-│   │   │   │   ├── anim
-│   │   │   │   ├── drawable
-│   │   │   │   ├── font
-│   │   │   │   ├── layout
-│   │   │   │   ├── menu
-│   │   │   │   ├── values
-│   │   │   └── AndroidManifest.xml
-├── README.md
-```
+ ├── src
+    │   ├── androidTest
+    │   │   ├── db
+    │   │   ├── repository
+    │   │   ├── util
+    │   ├── main
+    │   │   ├── assets
+    │   │   │   ├── fonts
+    │   │   ├── java
+    │   │   │   ├── data
+    │   │   │   │   ├── local
+    │   │   │   │   │   ├── converter
+    │   │   │   │   │   ├── dao
+    │   │   │   │   │   ├── entity
+    │   │   │   │   ├── remote
+    │   │   │   │   │   ├── api
+    │   │   │   │   │   ├── interceptor
+    │   │   │   │   │   ├── model
+    │   │   │   │   ├── repository
+    │   │   │   ├── di
+    │   │   │   │   ├── component
+    │   │   │   │   ├── module
+    │   │   │   ├── factory
+    │   │   │   ├── ui
+    │   │   │   │   ├── activity
+    │   │   │   │   ├── adapter
+    │   │   │   │   ├── custom
+    │   │   │   │   ├── viewmodel
+    │   │   │   ├── utils
+    │   │   ├── res
+    │   │   │   ├── anim
+    │   │   │   ├── drawable
+    │   │   │   ├── layout
+    │   │   │   ├── menu
+    │   │   │   ├── values
+    │   │   │   │   ├── menu
+    │   │   ├── resources
+    │   │   │   ├── api-response
+    │   │   ├── AndroidManifest.xml
+    │   ├── test
+    │   │   ├── api
