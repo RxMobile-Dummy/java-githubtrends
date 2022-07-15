@@ -23,10 +23,11 @@ public class GithubApiServiceTest extends ApiAbstract<TrendRepoApiServices> {
     @Test
     public void fetchPostsTest() throws IOException {
         enqueueResponse("test_repositories.json");
-        Response<TrendRepoApiResponse> response = service.fetchRepositories("stars", "desc", 1l).blockingFirst();
-        Assert.assertEquals(true, response.isSuccessful());
+        Response<TrendRepoApiResponse> response = service.fetchRepositories("stars", "desc", 1L).blockingFirst();
+        Assert.assertTrue(response.isSuccessful());
 
         TrendRepoApiResponse apiResponse = response.body();
+        assert apiResponse != null;
         Assert.assertEquals(new Long(806201), apiResponse.getTotalCount());
         Assert.assertEquals(10, apiResponse.getItems().size());
     }

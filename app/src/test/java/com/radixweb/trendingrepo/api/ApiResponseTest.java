@@ -14,14 +14,14 @@ public class ApiResponseTest {
     @Test
     public void exception() {
         Exception exception = new Exception("test");
-        Resource apiResponse = Resource.error(exception.getMessage(), exception);
+        Resource<Exception> apiResponse = Resource.error(exception.getMessage(), exception);
         Assert.assertEquals("test", apiResponse.message);
         Assert.assertEquals(Status.ERROR, apiResponse.status);
     }
 
     @Test
     public void success() {
-        Resource resource = Resource.success("test");
+        Resource<String> resource = Resource.success("test");
         Assert.assertEquals("test", resource.data);
         Assert.assertEquals(Status.SUCCESS, resource.status);
     }
